@@ -1,0 +1,25 @@
+# Multi-object unlearning on the ImageNette benchmark (paper §4.2, Table 8).
+#
+# Recommended r₁ = 5%, r₂ = 0.7%–3% (per concept), α = 0.6.
+# Easy concepts use r₂ = 0.7%; "hard-to-forget" concepts (parachute, golf ball,
+# gas pump) use r₂ = 3%.
+
+task: object
+model_id: runwayml/stable-diffusion-v1-5
+seed: 1244
+dtype: float16
+
+inference_steps: 50
+saliency_steps: 10
+
+r1: 0.05
+r2: 0.007
+alpha: 0.6
+
+r2_overrides:
+  parachute: 0.03
+  golf ball: 0.03
+  gas pump: 0.03
+
+output_dir: runs/object
+device: cuda

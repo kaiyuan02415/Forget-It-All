@@ -1,0 +1,22 @@
+# Multi-artist-style unlearning on SD v1.5 (paper §4.4, Table 8).
+#
+# Recommended r₁ = 5%, r₂ ∈ {2%, 3%}, α = 0.8 (artistic styles need a higher
+# concept-agnostic ratio to keep generation quality).
+
+task: art
+model_id: runwayml/stable-diffusion-v1-5
+seed: 1244
+dtype: float16
+
+inference_steps: 50
+saliency_steps: 10
+
+r1: 0.05
+r2: 0.02
+alpha: 0.8
+
+r2_overrides:
+  Van Gogh: 0.03
+
+output_dir: runs/art
+device: cuda

@@ -1,0 +1,21 @@
+# Explicit-content unlearning on the I2P benchmark (paper §4.3, Table 8).
+#
+# Paper aligns with prior baselines on SD v1.4. r₁ = 5–6%, r₂ = 1%, α = 0.6.
+
+task: explicit
+model_id: CompVis/stable-diffusion-v1-4
+seed: 1244
+dtype: float16
+
+inference_steps: 50
+saliency_steps: 10
+
+r1: 0.05
+r2: 0.01
+alpha: 0.6
+
+r2_overrides:
+  sexual: 0.01    # paper Table 8: r1 for "sexual" is 6%, kept default for r2
+
+output_dir: runs/explicit
+device: cuda
